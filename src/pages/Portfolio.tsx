@@ -897,12 +897,12 @@ Documented issues and resolutions to support knowledge management and process im
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email:</p>
-                  <p className="font-medium text-primary">Abdullah.Cloud.Dev@outlook.com</p>
+                  <p className="font-medium text-primary">hello@abdullahmahiofficial.com</p>
                 </div>
-                <div>
+                {/* <div>
                   <p className="text-sm text-muted-foreground">Mobile:</p>
                   <p className="font-medium text-primary">+880 1687 032087</p>
-                </div>
+                </div> */}
                 <div>
                   <p className="text-sm text-muted-foreground">Address:</p>
                   <p className="font-medium text-primary">Dhaka, Bangladesh</p>
@@ -1202,10 +1202,10 @@ Documented issues and resolutions to support knowledge management and process im
                 <div className="w-12 h-12 bg-cool-accent rounded-full flex items-center justify-center">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
-                <div>
+                {/* <div>
                   <h4 className="font-semibold text-primary">Mobile:</h4>
                   <p className="text-muted-foreground">+880 1687 032087</p>
-                </div>
+                </div> */}
               </div>
 
               <div className="flex items-center space-x-4">
@@ -1214,7 +1214,7 @@ Documented issues and resolutions to support knowledge management and process im
                 </div>
                 <div>
                   <h4 className="font-semibold text-primary">Email:</h4>
-                  <p className="text-muted-foreground">Abdullah.Cloud.Dev@outlook.com</p>
+                  <p className="text-muted-foreground">hello@abdullahmahiofficial.com</p>
                 </div>
               </div>
 
