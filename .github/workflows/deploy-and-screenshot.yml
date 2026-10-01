@@ -58,18 +58,38 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Wait for Site Deployment
-        run: sleep 20
-
-      - name: Capture Full Page Screenshot (Desktop View)
-        uses: karol-brejna-i/webpage-screenshot-action@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          url: 'https://abdullahmahiofficial.github.io/Portfolio-1.1/'
-          output: 'public/preview.png'
-          mode: 'wholePage'
-          viewportWidth: 1920
-          viewportHeight: 1080
-          deviceScaleFactor: 2
+          node-version: 20
+
+      - name: Install Playwright & Chromium
+        run: |
+          npm install -D playwright
+          npx playwright install --with-deps chromium
+
+      - name: Capture Full Desktop Screenshot
+        run: |
+          node -e '
+          const { chromium } = require("playwright");
+          (async () => {
+            const browser = await chromium.launch();
+            const page = await browser.newPage({
+              viewport: { width: 1920, height: 1080 },
+              deviceScaleFactor: 1
+            });
+            await page.goto("https://abdullahmahiofficial.github.io/Portfolio-1.1/", {
+              waitUntil: "networkidle",
+              timeout: 60000
+            });
+            await page.waitForTimeout(3000);
+            await page.screenshot({
+              path: "public/preview.png",
+              fullPage: true
+            });
+            await browser.close();
+          })();
+          '
 
       - name: Commit and Push Updated Screenshot
         run: |
@@ -79,6 +99,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No screenshot updates detected."
           else
-            git commit -m "chore: update portfolio screenshot [skip ci]"
+            git commit -m "chore: update full desktop screenshot [skip ci]"
             git push origin main
           fi

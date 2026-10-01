@@ -5,4 +5,7 @@
 ---
 
 ### Live Preview
-![Portfolio Live Preview](./public/preview.png)
+
+<p align="center">
+  <img src="./public/preview.png" alt="Portfolio Live Preview" width="100%" />
+</p>
