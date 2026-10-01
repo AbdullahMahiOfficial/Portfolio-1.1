@@ -14,11 +14,13 @@ import { Badge } from '@/components/ui/badge';
 import React from 'react';
 import { Download, Mail, MapPin, Phone, Globe, Award, Briefcase, GraduationCap, Calendar, Building2, Linkedin, Github, Facebook } from 'lucide-react';
 
+const assetPath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
 const Portfolio = () => {
   const statsRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
   const languagesRef = useRef<HTMLDivElement>(null);
-  
+
   const statsVisible = useIntersectionObserver(statsRef);
   const skillsVisible = useIntersectionObserver(skillsRef);
   const languagesVisible = useIntersectionObserver(languagesRef);
@@ -26,7 +28,7 @@ const Portfolio = () => {
   const experienceCount = useAnimatedCounter(7, 2000, statsVisible);
   const certificationsCount = useAnimatedCounter(50, 2000, statsVisible);
   const clientsCount = useAnimatedCounter(100, 2000, statsVisible);
-  
+
   const getColorByPercentage = (percentage: number): string => {
   if (percentage >= 90) return '#4CAF50';       // 🟩 Green
   if (percentage >= 80) return '#FF9800';       // 🟧 Orange
@@ -108,7 +110,7 @@ const Portfolio = () => {
     { name: 'English', percentage: 90 },
     { name: 'Hindi', percentage: 50 },
     // { name: 'Urdu', percentage: 50 },
-    
+
   ];
 
   // 40 Certification badges
@@ -121,249 +123,289 @@ const Portfolio = () => {
     // certificateImage: "/badges/test-image.jpg",
     // isPotrait : false
     // },
-    
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/1-CKA.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/CKA.webp",
-    isPotrait : false
-    },
-    
-    // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/2-RHCE.webp" alt="RHCE badge" className="object-contain w-full h-full" /></div>,
-    // certificateImage: "/badges/2-RHCE.webp",
-    // isPotrait : false
-    // },
-    
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/3-AZ-305.webp" alt="AZ 305 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/AZ-305.webp",
-    isPotrait : false
-    },
-    
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/4-AZ-400.webp" alt="AZ 400 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/AZ-400.webp",
-    isPotrait : false
-    },
-    
-    { badge: <div className="w-[210px] h-[210px] rounded-lg flex items-center justify-center"><img src="/badges/5-MS-102.webp" alt="MS 102 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/MS-102.webp",
-    isPotrait : false
-    },
-    
-    { badge: <div className="w-[190px] h-[190px] rounded-lg flex items-center justify-center"><img src="/badges/6-SC-100.webp" alt="PL 600 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/6-SC-100.webp",
-    isPotrait : false
-    },
-    
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/6-PL-600.webp" alt="PL 600 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/PL-600.webp",
-    isPotrait : false
-    },
-    
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/7-RHCSA.webp" alt="RHCSA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/RHCSA.webp",
-    isPotrait : false
-    },
-        
-    // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/7-AZ-800.webp" alt="AZ 104 badge" className="w-full h-full object-cover" /></div>,
-    // certificateImage: "/badges/7-AZ-800.webp",
-    // isPotrait : false
-    // },
 
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/GH-200.webp" alt="GH-200 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/GH-200.webp",
-    isPotrait : false
-    },
+{
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/1-CKA.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/CKA.webp'),
+    isPotrait: false
+  },
 
-  
-    { badge: <div className="w-[210px] h-[210px] rounded-lg flex items-center justify-center"><img src="/badges/8-AZ-104.webp" alt="AZ 104 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/AZ-104.webp",
-    isPotrait : false
-    },
+  // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="./badges/2-RHCE.webp" alt="RHCE badge" className="object-contain w-full h-full" /></div>,
+  // certificateImage: "./badges/2-RHCE.webp",
+  // isPotrait: false
+  // },
 
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/9-SC-200.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/SC-200.webp",
-    isPotrait : true
-    },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/10-MS-700.webp" alt="MS 700 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/MS-700.webp",
-    isPotrait : false
-    },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/11-PL-400.webp" alt="PL 400 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/PL-400.webp",
-    isPotrait : false
-    },
-        
-    // { badge: <div className="w-[300px] h-[300px] rounded-lg flex items-center justify-center"><img src="/badges/12-MTCNA.webp" alt="MTCNA badge" className="w-full h-full object-cover" /></div>,
-    // certificateImage: "/badges/MTCNA.webp",
-    // isPotrait : false
-    // },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg overflow-hidden flex items-center justify-center"><img src="/badges/12-MTCNA.webp" alt="MTCNA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/MTCNA.webp",
-    isPotrait : true
-    },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/13-AZ-900.webp" alt="AZ 900 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/AZ-900.webp",
-    isPotrait : false
-    },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/14-AI-900.webp" alt="AI 900 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/AI-900.webp",
-    isPotrait : false
-    },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/15-SC-900.webp" alt="SC 900 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/SC-900.webp",
-    isPotrait : false
-    },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/16-DP-900.webp" alt="DP 900 badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/DP-900.webp",
-    isPotrait : false
-    },
-        
-    // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/DP-900.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    // certificateImage: "/badges/DP-900.webp",
-    // isPotrait : false
-    // },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/2.0-DevSecOps.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/2.0-DevSecOps.webp",
-    isPotrait : false
-    },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/2.1-manage.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/2.1-manage.webp",
-    isPotrait : false
-    },
-               
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/2.2-CKAD.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/2.2-CKAD.webp",
-    isPotrait : false
-    },
-        
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/2.3-CKS.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/2.3-CKS.webp",
-    isPotrait : false
-    },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/3-AZ-305.webp')} alt="AZ 305 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/AZ-305.webp'),
+    isPotrait: false
+  },
 
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/3.1-Google.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/1-Google.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/3.2-Google.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/2-Google.webp",
-    isPotrait : false
-    },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/4-AZ-400.webp')} alt="AZ 400 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/AZ-400.webp'),
+    isPotrait: false
+  },
 
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/3.3-Linux.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/3-Linux.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/3.4-Certified.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/3.4-Certified.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/3.5-Learning.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/3.5-Learning.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/3.6-Computer.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/3.6-Computer.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/3.7-Cloud-Native.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/3.7-Cloud-Native.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/4.1-AKS.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/4.1-AKS.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/4.2-AAC.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/4.2-AAC.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/4.3-ABS.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/4.3-ABS.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/4.4-KCNA.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/4.4-KCNA.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/4.5-Jenkins.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/4.5-Jenkins.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/4.6-ArgoCD.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/4.6-ArgoCD.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/4.7-FluxCD.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/4.7-FluxCD.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/4.8-Istio.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
-    certificateImage: "/badges/4.8-Istio.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/5.1-CCNA Enterprise.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/1-CCNA Enterprise.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/5.2-CCNA Switching.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/2-CCNA Switching.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/5.3-introduction.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/3-introduction.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/5.4-cybersecurity.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/4-cybersecurity.webp",
-    isPotrait : false
-    },
-    { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/5.5-networking.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    certificateImage: "/badges/5-networking.webp",
-    isPotrait : false
-    },
+  {
+    badge: <div className="w-[210px] h-[210px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/5-MS-102.webp')} alt="MS 102 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/MS-102.webp'),
+    isPotrait: false
+  },
 
-    // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/5.6-networking.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    // certificateImage: "/badges/5.6-networking.webp",
-    // isPotrait : false
-    // },
+  {
+    badge: <div className="w-[190px] h-[190px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/6-SC-100.webp')} alt="PL 600 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/6-SC-100.webp'),
+    isPotrait: false
+  },
 
-    // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/1-CKA.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    // certificateImage: "/badges/1-CKA.webp",
-    // isPotrait : false
-    // },
-    // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="/badges/1-CKA.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
-    // certificateImage: "/badges/1-CKA.webp",
-    // isPotrait : false
-    // },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/6-PL-600.webp')} alt="PL 600 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/PL-600.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/7-RHCSA.webp')} alt="RHCSA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/RHCSA.webp'),
+    isPotrait: false
+  },
+
+  // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="./badges/7-AZ-800.webp" alt="AZ 104 badge" className="w-full h-full object-cover" /></div>,
+  // certificateImage: "./badges/7-AZ-800.webp",
+  // isPotrait: false
+  // },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/GH-200.webp')} alt="GH-200 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/GH-200.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[210px] h-[210px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/8-AZ-104.webp')} alt="AZ 104 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/AZ-104.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/9-SC-200.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/SC-200.webp'),
+    isPotrait: true
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/10-MS-700.webp')} alt="MS 700 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/MS-700.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/11-PL-400.webp')} alt="PL 400 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/PL-400.webp'),
+    isPotrait: false
+  },
+
+  // { badge: <div className="w-[300px] h-[300px] rounded-lg flex items-center justify-center"><img src="./badges/12-MTCNA.webp" alt="MTCNA badge" className="w-full h-full object-cover" /></div>,
+  // certificateImage: "./badges/MTCNA.webp",
+  // isPotrait: false
+  // },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg overflow-hidden flex items-center justify-center"><img src={assetPath('badges/12-MTCNA.webp')} alt="MTCNA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/MTCNA.webp'),
+    isPotrait: true
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/13-AZ-900.webp')} alt="AZ 900 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/AZ-900.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/14-AI-900.webp')} alt="AI 900 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/AI-900.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/15-SC-900.webp')} alt="SC 900 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/SC-900.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/16-DP-900.webp')} alt="DP 900 badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/DP-900.webp'),
+    isPotrait: false
+  },
+
+  // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="./badges/DP-900.webp" alt="CKA badge" className="object-contain w-full h-full" /></div>,
+  // certificateImage: "./badges/DP-900.webp",
+  // isPotrait: false
+  // },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/2.0-DevSecOps.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/2.0-DevSecOps.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/2.1-manage.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/2.1-manage.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/2.2-CKAD.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/2.2-CKAD.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/2.3-CKS.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/2.3-CKS.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/3.1-Google.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/1-Google.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/3.2-Google.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/2-Google.webp'),
+    isPotrait: false
+  },
+
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/3.3-Linux.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/3-Linux.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/3.4-Certified.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/3.4-Certified.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/3.5-Learning.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/3.5-Learning.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/3.6-Computer.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/3.6-Computer.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/3.7-Cloud-Native.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/3.7-Cloud-Native.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/4.1-AKS.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/4.1-AKS.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/4.2-AAC.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/4.2-AAC.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/4.3-ABS.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/4.3-ABS.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/4.4-KCNA.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/4.4-KCNA.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/4.5-Jenkins.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/4.5-Jenkins.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/4.6-ArgoCD.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/4.6-ArgoCD.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/4.7-FluxCD.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/4.7-FluxCD.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/4.8-Istio.webp')} alt="CKA badge" className="object-contain w-full h-full" /></div>,
+    certificateImage: assetPath('badges/4.8-Istio.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/5.1-CCNA Enterprise.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/1-CCNA Enterprise.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/5.2-CCNA Switching.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/2-CCNA Switching.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/5.3-introduction.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/3-introduction.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/5.4-cybersecurity.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/4-cybersecurity.webp'),
+    isPotrait: false
+  },
+  {
+    badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src={assetPath('badges/5.5-networking.webp')} alt="CKA badge" className="w-full h-full object-cover" /></div>,
+    certificateImage: assetPath('badges/5-networking.webp'),
+    isPotrait: false
+  },
+
+  // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="./badges/5.6-networking.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
+  // certificateImage: "./badges/5.6-networking.webp",
+  // isPotrait: false
+  // },
+
+  // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="./badges/1-CKA.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
+  // certificateImage: "./badges/1-CKA.webp",
+  // isPotrait: false
+  // },
+  // { badge: <div className="w-[200px] h-[200px] rounded-lg flex items-center justify-center"><img src="./badges/1-CKA.webp" alt="CKA badge" className="w-full h-full object-cover" /></div>,
+  // certificateImage: "./badges/1-CKA.webp",
+  // isPotrait: false
+  // },
 
 
-    
-    
-   
+
+
+
   ];
 
   // Portfolio projects - 12 total, 3 columns
   const portfolioProjects = [
-    // { 
-    //   title: "E-commerce Platform", 
-    //   category: "E-commerce", 
-    //   description: "Full-stack e-commerce solution with payment integration", 
+    // {
+    //   title: "E-commerce Platform",
+    //   category: "E-commerce",
+    //   description: "Full-stack e-commerce solution with payment integration",
     //   icon: "/c_logo/1-CKA.webp",
     //   details: "Built with React, Node.js, and MongoDB. Features include user authentication, shopping cart, payment processing, and admin dashboard."
     // },
 
-    { 
-      title: "Email Infrastructure Modernization", 
-      category: "Email Migration", 
-      description: "Email Infrastructure Modernization: Zimbra to Microsoft 365 Migration", 
+    {
+      title: "Email Infrastructure Modernization",
+      category: "Email Migration",
+      description: "Email Infrastructure Modernization: Zimbra to Microsoft 365 Migration",
       icon: "/c_logo/BBF Logo.webp",
       details: `Successfully led the Email Infrastructure Modernization project for Bangladesh Brand Forum, conducted in 2025. The initiative involved migrating the entire organization’s email system from Zimbra to Microsoft 365, resulting in enhanced security, reliability, and user experience with zero data loss and minimal disruption.
 
@@ -377,10 +419,10 @@ Key Services Deployed:
 - User Training & Support: Conducted onboarding sessions and provided documentation to ensure user readiness and adoption.`
     },
 
-    { 
-      title: "Kubernetes Autoscaling System", 
-      category: "Platform & DevOps", 
-      description: "Implementation and Optimization of Kubernetes Autoscaling for Microservices Architecture", 
+    {
+      title: "Kubernetes Autoscaling System",
+      category: "Platform & DevOps",
+      description: "Implementation and Optimization of Kubernetes Autoscaling for Microservices Architecture",
       icon: "/c_logo/IIT.webp",
       details: `Successfully designed and implemented a scalable Kubernetes-based microservices architecture as part of a university project (April–May 2025). The project focused on optimizing resource utilization, performance, and reliability through dynamic autoscaling strategies.
 
@@ -394,18 +436,18 @@ Key Services Deployed:
 - Documentation & Demo: Delivered comprehensive technical documentation and a live demo for evaluation.`
     },
 
-    // { 
-    //   title: "Corporate Website", 
-    //   category: "Corporate", 
-    //   description: "Professional business website with CMS", 
+    // {
+    //   title: "Corporate Website",
+    //   category: "Corporate",
+    //   description: "Professional business website with CMS",
     //   icon: "/c_logo/1-CKA.webp",
     //   details: `"Responsive corporate website with content management system, contact forms, and SEO optimization."`
     // },
 
-    { 
-      title: "GitHub Enterprise Server Deployment", 
-      category: "Cloud & Infrastructure", 
-      description: "Secure SCM Infrastructure — GitHub Enterprise Server Deployment", 
+    {
+      title: "GitHub Enterprise Server Deployment",
+      category: "Cloud & Infrastructure",
+      description: "Secure SCM Infrastructure — GitHub Enterprise Server Deployment",
       icon: "/c_logo/Prime_Bank.webp",
       details: `Successfully led the deployment of GitHub Enterprise Server for Prime Bank PLC in January 2025. This project significantly enhanced source code security, development workflow control, and compliance with internal IT policies.
 
@@ -417,11 +459,11 @@ Key Services Deployed:
 - Backup and disaster recovery: Implemented automated backup and recovery protocols.
 - User Training and UAT: Ensured smooth adoption and validated system functionality.`
     },
-    
-    { 
-      title: "Microsoft Cloud Deployment", 
-      category: "Microsoft Services", 
-      description: "End-to-End User Deployment of Microsoft Cloud Services", 
+
+    {
+      title: "Microsoft Cloud Deployment",
+      category: "Microsoft Services",
+      description: "End-to-End User Deployment of Microsoft Cloud Services",
       icon: "/c_logo/BSEZ.webp",
       details: `Successfully led the end-user deployment of Microsoft Cloud Services for Bangladesh SEZ from 9 March 2025 to 10 March 2025. This project improved endpoint security, identity management, and user productivity across the organization.
 
@@ -435,10 +477,10 @@ Key Services Deployed:
 - User Training and UAT: Delivered onboarding sessions and validated system functionality.`
     },
 
-    { 
-      title: "Enterprise Deployment", 
-      category: "Microsoft Services", 
-      description: "Secure Deployment of Microsoft Enterprise Services", 
+    {
+      title: "Enterprise Deployment",
+      category: "Microsoft Services",
+      description: "Secure Deployment of Microsoft Enterprise Services",
       icon: "/c_logo/Prime_Bank.webp",
       details: `Successfully led the deployment of Microsoft services for Prime Bank PLC, conducted from November 2024 to December 2024. The result is improved performance, scalability, and reliability.
 
@@ -453,10 +495,10 @@ Key Services Deployed:
 - End User Technical Support: Provided comprehensive support to ensure user satisfaction.`
     },
 
-    { 
-      title: "Microsoft Services Deployment", 
-      category: "Microsoft Services", 
-      description: "Enterprise Endpoint Security and Compliance Deployment using Microsoft Intune & Defender", 
+    {
+      title: "Microsoft Services Deployment",
+      category: "Microsoft Services",
+      description: "Enterprise Endpoint Security and Compliance Deployment using Microsoft Intune & Defender",
       icon: "/c_logo/BSEZ.webp",
       details: `Successfully led the deployment of Microsoft services for Bangladesh SEZ from December 2024 to January 2025. This project significantly enhanced performance, scalability, and reliability.
 
@@ -473,10 +515,10 @@ Key Services Deployed:
 - User Training and UAT: Ensured smooth adoption and validated system functionality.`
     },
 
-    { 
-      title: "Utkorsho Platform Implementation", 
-      category: "Platform & DevOps", 
-      description: "Utkorsho Platform Implementation and Go-Live Project", 
+    {
+      title: "Utkorsho Platform Implementation",
+      category: "Platform & DevOps",
+      description: "Utkorsho Platform Implementation and Go-Live Project",
       icon: "/c_logo/Utk.webp",
       details: `Successfully led the deployment of the Utkorsho platform, conducted from January 2024 to February 2024. The platform was commercially launched on February 5, 2024, resulting in improved performance, scalability, and reliability.
 
@@ -491,10 +533,10 @@ Key Services Deployed:
 - Virtual Private Cloud: Enhanced network security and isolation through advanced VPC configurations.`
     },
 
-    { 
-      title: "Prohori GPS Tracker Migration", 
-      category: "Cloud Migration", 
-      description: "Prohori GPS Tracking System Digital Transformation Initiative", 
+    {
+      title: "Prohori GPS Tracker Migration",
+      category: "Cloud Migration",
+      description: "Prohori GPS Tracking System Digital Transformation Initiative",
       icon: "/c_logo/Prohori.webp",
       details: `Successfully led the full migration of the Prohori GPS Tracker platform from AWS to Huawei Cloud, spanning from December 2023 to January 2024. The platform was commercially launched on January 18, 2024, ensuring a seamless transition and enhanced performance.
 
@@ -506,10 +548,10 @@ Key Services Migrated:
 - Database Server: Optimized data management and retrieval processes.`
     },
 
-    { 
-      title: "TechShopBD Migration", 
-      category: "Cloud Migration", 
-      description: "Migration of TechShop Platform to Scalable Cloud Architecture", 
+    {
+      title: "TechShopBD Migration",
+      category: "Cloud Migration",
+      description: "Migration of TechShop Platform to Scalable Cloud Architecture",
       icon: "/c_logo/TechShop.webp",
       details: `Led the comprehensive migration of TechShopBd.com’s platform from AWS to Huawei Cloud, executed from November 2023 to December 2023. The platform was successfully launched commercially on December 22, 2023, resulting in enhanced performance, scalability, and reliability.
 
@@ -522,10 +564,10 @@ Key Services Migrated:
 - Database Server: Optimized data management and retrieval processes.`
     },
 
-    { 
-      title: "Rokomari Cloud Migration ", 
-      category: "Cloud Migration", 
-      description: "Rokomari Cloud Migration and Performance Enhancement Project", 
+    {
+      title: "Rokomari Cloud Migration ",
+      category: "Cloud Migration",
+      description: "Rokomari Cloud Migration and Performance Enhancement Project",
       icon: "/c_logo/Rokomari.webp",
       details: `Successfully led the full migration of Rokomari.com’s platform from AWS to Huawei Cloud, conducted from August 2023 to October 2023. The platform was commercially launched on October 6, 2023, resulting in improved performance, scalability, and reliability.
 
@@ -539,19 +581,19 @@ Key Services Migrated:
 - Virtual Private Cloud: Enhanced network security and isolation through advanced VPC configurations. `
     },
 
-    // { 
-    //   title: "Corporate Website", 
-    //   category: "Corporate", 
-    //   description: "Professional business website with CMS", 
+    // {
+    //   title: "Corporate Website",
+    //   category: "Corporate",
+    //   description: "Professional business website with CMS",
     //   icon: "/c_logo/1-CKA.webp",
     //   details: `"Responsive corporate website with content management system, contact forms, and SEO optimization."`
     // },
 
 
-    { 
-      title: "Azure IaaS Infrastructure Deployment", 
-      category: "Cloud Infrastructure", 
-      description: "Windows Server Deployment and Monitoring in Azure", 
+    {
+      title: "Azure IaaS Infrastructure Deployment",
+      category: "Cloud Infrastructure",
+      description: "Windows Server Deployment and Monitoring in Azure",
       icon: "/c_logo/Syn.webp",
       details: `Successfully led the Windows Server Deployment and Monitoring in Azure project for Syngenta Bangladesh Limited, conducted in 2023. The project focused on deploying Windows Server instances in Azure with robust monitoring and security configurations to ensure continuous availability and performance.
 
@@ -563,17 +605,17 @@ Key Services Deployed:
 - Update Management: Enabled to ensure timely patching and compliance with security standards.
 - Role-Based Access Control (RBAC): Applied to manage secure access to server resources.`
     },
-    // { 
-    //   title: "E-commerce Platform", 
-    //   category: "E-commerce", 
-    //   description: "Full-stack e-commerce solution with payment integration", 
+    // {
+    //   title: "E-commerce Platform",
+    //   category: "E-commerce",
+    //   description: "Full-stack e-commerce solution with payment integration",
     //   icon: "/c_logo/1-CKA.webp",
     //   details: `"Built with React, Node.js, and MongoDB. Features include user authentication, shopping cart, payment processing, and admin dashboard."`
     // },
-    { 
-      title: "Azure PaaS Web Solution Deployment", 
-      category: "DevOps & PaaS", 
-      description: "Infrastructure Configuration, Maintenance, and Monitoring", 
+    {
+      title: "Azure PaaS Web Solution Deployment",
+      category: "DevOps & PaaS",
+      description: "Infrastructure Configuration, Maintenance, and Monitoring",
       icon: "/c_logo/CE.webp",
       details: `Successfully led the Infrastructure Configuration, Maintenance, and Monitoring project for Computer Edge Limited, conducted in 2023. The project focused on deploying and optimizing Azure-based services to ensure high performance, security, and continuous availability of web applications.
 
@@ -632,7 +674,7 @@ Define DevOps‑ready and cloud‑native architecture patterns to improve operat
 Collaborate with cross‑functional teams and vendors to align architecture with digital transformation roadmaps.`,
     logo: (
       <div className="w-[120px] h-[120px] rounded-lg flex items-center justify-center">
-        <img src="c_logo/ADN.webp" alt="ADN Logo" className="max-w-full max-h-full object-contain rounded-lg" />
+        <img src={assetPath('c_logo/ADN.webp')} alt="ADN Logo" className="max-w-full max-h-full object-contain rounded-lg" />
       </div>
     )
   },
@@ -679,7 +721,7 @@ Optimized cloud resource consumption and cost efficiency across hybrid cloud env
 Supported architecture decisions through operational insights and performance analysis.`,
       logo: (
         <div className="w-[120px] h-[120px] rounded-lg flex items-center justify-center">
-          <img src="/c_logo/CPL.webp" alt="CPL Logo" className="max-w-full max-h-full object-contain rounded-lg" />
+          <img src={assetPath('c_logo/CPL.webp')} alt="CPL Logo" className="max-w-full max-h-full object-contain rounded-lg" />
         </div>
       )
     },
@@ -701,9 +743,9 @@ Resolved complex incidents and service requests within defined service‑level t
       //   </div>
       // )
       logo: (
-  <div className="w-[120px] h-[120px] rounded-lg flex items-start justify-center"> 
-    <img
-      src="/c_logo/NG.webp"
+  <div className="w-[120px] h-[120px] rounded-lg flex items-start justify-center">
+          <img
+            src={assetPath('c_logo/NG.webp')}
       alt="NASSA Group Logo"
       className="max-w-full max-h-full object-contain rounded-lg"
     />
@@ -726,7 +768,7 @@ Documented issues and resolutions to support knowledge management and process im
       logo: (
         <div className="w-[120px] h-[120px] rounded-lg flex items-center justify-center">
           <img
-            src="/c_logo/MFG.webp"
+            src={assetPath('c_logo/MFG.webp')}
             alt="Micro Fibre Group Logo"
             className="w-full h-full object-cover rounded-lg"
           />
@@ -738,31 +780,31 @@ Documented issues and resolutions to support knowledge management and process im
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section id="home" className="pt-40 pb-8 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="w-80 h-80 rounded-sm overflow-hidden flex-shrink-0 ">
-              <img 
-                src="/lovable-uploads/profile-photo.webp" 
+              <img
+                src={assetPath('lovable-uploads/profile-photo.webp')}
                 alt="Abdullah Al Mamun"
                 className="w-full h-full object-cover"
               />
             </div>
-            
+
             <div className="flex-1 text-center lg:text-left">
               <h1 className="text-5xl font-bold text-primary mb-4">Abdullah Al Mamun</h1>
               <p className="text-xl text-cool-primary mb-6 font-semibold">
                 {/* Solution Architect | Cloud Strategist | DevOps Innovator */}
                 Solution Architect | Cloud • DevOps • Microsoft 365 | Hybrid Infrastructure
               </p>
-              
+
               <div className="mb-8">
                 <p className="text-lg leading-relaxed text-muted-foreground mb-4 text-justify">
                   I design and deliver secure, scalable, and high‑performance cloud solutions aligned with modern business needs. With hands‑on expertise across Azure, AWS, and Huawei Cloud, I help organizations modernize infrastructure, automate operations, strengthen security, and achieve operational excellence.
                 </p>
-                
+
                 <div className="mb-6">
                   <h3 className="text-lg font-semibold mb-3 text-primary">My expertise includes:</h3>
 
@@ -841,12 +883,12 @@ Documented issues and resolutions to support knowledge management and process im
                     </div>
                   </div>
                 </div>
-                
+
                 <p className="text-lg text-muted-foreground mb-6 text-justify">
                   Certified in Azure Solutions Architecture, DevOps Engineering, Microsoft 365 Administration, and Kubernetes (CKA), I bring a strategic mindset with hands‑on technical leadership—ensuring every solution is secure, scalable, reliable, and aligned with business goals.
                 </p>
               </div>
-              
+
               {/* Contact Info */}
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <div>
@@ -876,7 +918,7 @@ Documented issues and resolutions to support knowledge management and process im
                   <p className="font-medium text-primary">Dhaka, Bangladesh</p>
                 </div> */}
               </div>
-              
+
               {/* Social Profiles */}
               <div className="flex space-x-4 justify-center lg:justify-start">
                 <a href="https://linkedin.com/in/abdullahmahiofficial/" target="_blank" rel="noopener noreferrer" className="text-cool-primary hover:text-cool-accent transition-colors">
@@ -944,11 +986,11 @@ Documented issues and resolutions to support knowledge management and process im
 
 
       {/* Skills Section - Animated on click/visit */}
-      
+
       <section id="skills" className="py-16 bg-cool-light" onClick={() => window.location.reload()}>
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-primary">Skills</h2>
-  
+
             {/* Technical Skills */}
           <div ref={skillsRef} className="mb-16">
             <h3 className="text-2xl font-semibold mb-8 text-primary">Technical Skills</h3>
@@ -959,7 +1001,7 @@ Documented issues and resolutions to support knowledge management and process im
                   label={skill.name}
                   percentage={skill.percentage}
                   shouldAnimate={skillsVisible}
-                  
+
                 />
               ))}
             </div>
@@ -1020,7 +1062,7 @@ Documented issues and resolutions to support knowledge management and process im
             <CardContent className="p-0">
               <div className="flex items-start space-x-6">
                 <div className="w-[120px] h-[140px] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <img src="/c_logo/JU.webp" alt="JU ogo" className="w-full h-full object-contain rounded-lg" />
+                  <img src={assetPath('c_logo/JU.webp')} alt="JU ogo" className="w-full h-full object-contain rounded-lg" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-2xl font-bold text-primary mb-2">Jahangirnagar University</h3>
@@ -1043,7 +1085,7 @@ Documented issues and resolutions to support knowledge management and process im
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4 text-primary">Portfolio</h2>
           <p className="text-center text-muted-foreground mb-12">My Recent Works</p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {portfolioProjects.map((project, index) => (
               <ProjectDialog key={index} project={project} index={index} />
@@ -1070,32 +1112,32 @@ Documented issues and resolutions to support knowledge management and process im
       <section className="py-16 bg-cool-light">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-primary">My Resume</h2>
-          
+
           <Card className="p-8 border border-border hover:shadow-lg transition-shadow duration-300">
             <CardContent className="p-0 text-center">
               <div className="w-24 h-24 bg-cool-light rounded-lg flex items-center justify-center mx-auto mb-6">
                 <Download className="w-12 h-12 text-cool-primary" />
               </div>
-              
+
               <h3 className="text-2xl font-bold mb-4 text-primary">Professional Resume</h3>
               <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Download my complete professional resume with detailed information about my experience, 
+                Download my complete professional resume with detailed information about my experience,
                 skills, education, and certifications in cloud architecture and DevOps.
               </p>
-              
-              {/* <Button 
+
+              {/* <Button
                 className="bg-cool-primary hover:bg-cool-accent text-white px-8 py-3"
                 onClick={() => window.open('https://drive.google.com/file/d/1jMhJz6fdqiSR8SREPa0dLN8CLviVW_WC/view?usp=sharing', )}
               >
                 <Download className="w-4 h-4 mr-2" />
                 Download my Resume
               </Button> */}
-              
+
               <Button
                 className="bg-cool-primary hover:bg-cool-accent text-white px-8 py-3"
                 onClick={() => {
                   const link = document.createElement("a");
-                  link.href = "/lovable-uploads/CV.pdf";
+                  link.href = assetPath('lovable-uploads/CV.pdf');
                   link.download = "K M Abdulla Al Mamun"; // You can rename the file here
                   document.body.appendChild(link);
                   link.click();
@@ -1142,7 +1184,7 @@ Documented issues and resolutions to support knowledge management and process im
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4 text-primary">Get In Touch</h2>
           <p className="text-center text-muted-foreground mb-12">Let's Keep In Touch<br />I am very much looking forward to hearing from you</p>
-          
+
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="space-y-6">
@@ -1155,7 +1197,7 @@ Documented issues and resolutions to support knowledge management and process im
                   <p className="text-muted-foreground">Dhaka, Bangladesh</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-cool-accent rounded-full flex items-center justify-center">
                   <Phone className="w-6 h-6 text-white" />
@@ -1165,7 +1207,7 @@ Documented issues and resolutions to support knowledge management and process im
                   <p className="text-muted-foreground">+880 1687 032087</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-cool-secondary rounded-full flex items-center justify-center">
                   <Mail className="w-6 h-6 text-white" />
@@ -1175,7 +1217,7 @@ Documented issues and resolutions to support knowledge management and process im
                   <p className="text-muted-foreground">Abdullah.Cloud.Dev@outlook.com</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-cool-primary rounded-full flex items-center justify-center">
                   <span className="text-white font-bold">SM</span>
@@ -1204,7 +1246,7 @@ Documented issues and resolutions to support knowledge management and process im
             <div className="bg-cool-light rounded-lg p-8 border border-border">
               <h3 className="text-xl font-semibold mb-2 text-primary">Leave me a message</h3>
               <p className="text-muted-foreground mb-6">If you have any observations, I am ready to give you feedback. The quickest way to get in touch with me is to fill up the contact form.</p>
-              
+
               <form className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <Input placeholder="Your Name" className="border-border" />

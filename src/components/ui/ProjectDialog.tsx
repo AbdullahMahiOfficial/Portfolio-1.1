@@ -2,6 +2,8 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
+const assetPath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
 interface ProjectDialogProps {
   project: {
     icon: string
@@ -25,7 +27,7 @@ const ProjectDialog = ({ project, index }: ProjectDialogProps) => {
             <div className="">
               <div className="text-4xl mb-4">
                 <img
-                  src={project.icon}
+                  src={assetPath(project.icon)}
                   alt={`${project.title} icon`}
                   className="w-[100px] h-[100px] mx-auto"
                 />

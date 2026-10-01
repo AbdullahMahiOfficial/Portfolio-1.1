@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+const assetPath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
 
@@ -51,8 +53,8 @@ const Navigation = () => {
           {/* Profile */}
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 overflow-hidden">
-              <img 
-                src="/lovable-uploads/profile-icon.webp" 
+              <img
+                src={assetPath('lovable-uploads/profile-icon.webp')}
                 alt="Abdullah Al Mamun"
                 className="w-full h-full object-cover"
               />
@@ -66,7 +68,7 @@ const Navigation = () => {
             <div className="flex space-x-8">
               {navItems.map((item, index) => {
                 const colorClass = 'text-nav-foreground hover:text-cool-primary';
-                
+
                 return (
                   <button
                     key={item.id}
