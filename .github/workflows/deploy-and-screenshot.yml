@@ -61,12 +61,15 @@ jobs:
       - name: Wait for Site Deployment
         run: sleep 20
 
-      - name: Capture Full Page Screenshot
+      - name: Capture Full Page Screenshot (Desktop View)
         uses: karol-brejna-i/webpage-screenshot-action@v1
         with:
           url: 'https://abdullahmahiofficial.github.io/Portfolio-1.1/'
           output: 'public/preview.png'
           mode: 'wholePage'
+          viewportWidth: 1920
+          viewportHeight: 1080
+          deviceScaleFactor: 2
 
       - name: Commit and Push Updated Screenshot
         run: |
