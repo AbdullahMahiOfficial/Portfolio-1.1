@@ -29,10 +29,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Application
         run: npm run build
@@ -59,17 +58,15 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Wait for Live Site to Propagate
-        run: sleep 15
+      - name: Wait for Site Deployment
+        run: sleep 20
 
       - name: Capture Full Page Screenshot
-        uses: flared/action-screenshots@v1
+        uses: karol-brejna-i/webpage-screenshot-action@v1
         with:
           url: 'https://abdullahmahiofficial.github.io/Portfolio-1.1/'
           output: 'public/preview.png'
-          fullPage: 'true'
-          width: 1440
-          height: 900
+          mode: 'wholePage'
 
       - name: Commit and Push Updated Screenshot
         run: |
@@ -77,8 +74,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add public/preview.png
           if git diff --staged --quiet; then
-            echo "No screenshot changes to commit."
+            echo "No screenshot updates detected."
           else
-            git commit -m "chore: auto-update portfolio screenshot [skip ci]"
+            git commit -m "chore: update portfolio screenshot [skip ci]"
             git push origin main
           fi
