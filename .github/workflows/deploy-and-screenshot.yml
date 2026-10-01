@@ -1,0 +1,84 @@
+name: Deploy to GitHub Pages & Update Screenshot
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  update-screenshot:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Wait for Live Site to Propagate
+        run: sleep 15
+
+      - name: Capture Full Page Screenshot
+        uses: flared/action-screenshots@v1
+        with:
+          url: 'https://abdullahmahiofficial.github.io/Portfolio-1.1/'
+          output: 'public/preview.png'
+          fullPage: 'true'
+          width: 1440
+          height: 900
+
+      - name: Commit and Push Updated Screenshot
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/preview.png
+          if git diff --staged --quiet; then
+            echo "No screenshot changes to commit."
+          else
+            git commit -m "chore: auto-update portfolio screenshot [skip ci]"
+            git push origin main
+          fi
