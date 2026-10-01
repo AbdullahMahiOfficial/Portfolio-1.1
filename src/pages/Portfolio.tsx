@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import React from 'react';
-import { Download, Mail, MapPin, Phone, Globe, Award, Briefcase, GraduationCap, Calendar, Building2, Linkedin, Github, Facebook } from 'lucide-react';
+import { Download, Mail, MapPin, Globe, Award, Briefcase, GraduationCap, Calendar, Building2, Linkedin, Github, Facebook } from 'lucide-react';
 
 const assetPath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
 
@@ -1196,16 +1196,6 @@ Documented issues and resolutions to support knowledge management and process im
                   <h4 className="font-semibold text-primary">Address:</h4>
                   <p className="text-muted-foreground">Dhaka, Bangladesh</p>
                 </div>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-cool-accent rounded-full flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-white" />
-                </div>
-                {/* <div>
-                  <h4 className="font-semibold text-primary">Mobile:</h4>
-                  <p className="text-muted-foreground">+880 1687 032087</p>
-                </div> */}
               </div>
 
               <div className="flex items-center space-x-4">
